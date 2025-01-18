@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Album</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Album </h1>
+    <form action="/creator/album/{{ username }}/{{ album.album_id }}/update" method="POST">
+        <label for="date_created">Date Created:</label>
+        <input type="text" name="date_created" value = {{ album.date_created }} readonly>
+
+        <label for="genre">Genre:</label>
+        <input type="text" name="genre" value = {{ album.genere }} required>
+
+        <label for="album_by">Album By (User ID):</label>
+        <input type="text" name="album_by" value = {{ username }} readonly>
+
+        <label for="album_name">Album Name:</label>
+        <input type="text" name="album_name" value = {{ album.album_name }} required>
+
+        <input type="submit" value="Add Album">
+    </form>
+    <br>
+    <br>
+    <a href="/creator_tem/{{ username }}" type="button"> Back </a>
+</body>
+</html>

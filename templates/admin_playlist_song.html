@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist_Song Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+        #sidebar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        #sidebar a:hover {
+            background-color: #555;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <a href="/admin" > BASE </a>
+        <a href="/admin/user" > User Table </a>
+        <a href="/admin/user_type" > User_Type Table </a>
+        <a href="/admin/song" > Song Table </a>
+        <a href="/admin/playlist"> Playlist Table </a>
+        <a href="/admin/playlist_song"> Playlist_Song Table </a>
+        <a href="/admin/album"> Album Table </a>
+        <a href="/admin/album_song"> Album_Song Table </a>
+        <a href="/admin/like_song"> Like_Song Table </a>
+    </div>
+    <div id="content">
+        <h2>Playlist_Song Data Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>playlist_id</th>
+                    <th>song_id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample Data Row (You would dynamically generate these rows in a real application) -->
+                {% for k in playlist_song %}
+                <tr>
+                    <td>{{ k.playlist_id }}</td>
+                    <td>{{ k.song_id }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Additional rows go here -->
+            </tbody>
+        </table>
+        <a href="/admin"> Back </a>
+
+    </div>
+</body>
+</html>

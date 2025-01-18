@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Authentication</title>
+    <style>
+        body {
+            background-color: #ecf0f5;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .topp {
+            background-color: #3498db;
+            color: #fff;
+            font-family: 'Allura', cursive;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #3498db;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #3498db;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 200px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        div.align-center {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="topp">
+        <h1>THE MUSIC APP</h1>
+    </div>
+    <div>
+        <br>
+        <br>
+        <h2>Admin Authentication</h2>
+        <form action="/admin_login" method="POST">
+            <label for="username">ID:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Key:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div class="align-center">
+        <br> <br> <br> <br> <br> <br><br><br><br>
+        <p>Not an Admin?</p>
+        <a href="/user_login">General User</a> | 
+        <a href="/register_new">Register</a>
+    </div>
+</body>
+</html>

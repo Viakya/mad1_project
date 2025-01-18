@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF; /* Blue Heading Color */
+            margin-top: 40px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>About You</h1>
+    <p>User_id: {{ user.user_id }}</p>
+    <p>Name: {{ user.first_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <a href="/you_tem/{{ username }}">Back</a>
+</body>
+</html>

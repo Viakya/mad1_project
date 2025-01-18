@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1, h2, h3, h5 {
+            color: #3498db;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h5 {
+            text-align: center;
+            color: #666;
+        }
+
+        .navigation-container {
+            display: flex;
+            justify-content: space-around;
+            background-color: #3498db;
+            padding: 10px 0;
+        }
+
+        .navigation-button {
+            flex: 1;
+            padding: 10px 0;
+            background-color: #2980b9;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navigation-button:hover {
+            background-color: #1f618d;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .song-box {
+            flex: 0 0 calc(33.3333% - 20px);
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            transition: background-color 0.3s ease-in-out;
+            position: relative;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .song-details {
+            padding: 20px;
+        }
+
+        .song-box:hover {
+            background-color: #f0f0f0;
+        }
+
+        .song-details h3 {
+            margin-top: 0;
+        }
+
+        .song-details p {
+            margin: 5px 0;
+            color: #777;
+        }
+
+        .play-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6a9e6a;
+            color: #fff;
+        }
+        .corner-url {
+            top: 10px;
+            right: 10px;
+            background-color: #3498db;
+            color: red;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HOME</h1>
+    <h5>User ID: {{ name }}</h5>
+    <a href="/" class="corner-url">Logout</a>
+
+    <div class="navigation-container">
+        <a href="/home_tem/{{ name }}" class="navigation-button">Home</a>
+        <a href="/search_tem/{{ name }}" class="navigation-button">Search</a>
+        <a href="/you_tem/{{ name }}" class="navigation-button">You</a>
+        <a href="/creator_tem/{{ name }}" class="navigation-button">Creator</a>
+    </div>
+    <h2 style="text-align: center;">Treat Your Ear</h2>
+    <center><h2>-- SONGS --</h2></center>
+    <div class="content">
+        {% for song in songs %}
+        <div class="song-box">
+            <h3>{{ song.name }}</h3>
+            <p>Artist: {{ song.artist }}</p>
+            <p>Uploaded by: {{ song.uploaded_by }}</p>
+            <p>Date Created: {{ song.upload_date }}</p>
+
+            {% set song_id = song.song_id %}
+            {% set nnn = name %}
+
+            {% if nnn|string in dd[song_id|string] %}
+            <p>Liked by you: Yes</p>
+            {% else %}
+            <p>Liked by you: No</p>
+            {% endif %}
+
+            <p>Total Likes: {{ dd[song_id|string]|length }}</p>
+            <p><a href="/you_tem/playlist_song/{{name}}" type="button">Add to Playlist</a></p>
+            <p><a href="/home_tem/{{name}}/{{song.song_id}}/like" type="button">Like</a></p>
+            <p><a href="/home_tem/{{name}}/{{song.song_id}}/play" type="button">Play</a></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+         <br> <br>
+        <center><h2>-- ALBUMS --</h2></center>
+        <table id="all-albums">
+            <tr>
+                <th>Album_id</th>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Album By</th>
+            </tr>
+            {% for i in albums %}
+            <tr>
+                <td>{{ i["album_id"] }}</td>
+                <td><a href="/home_album_detail/{{ name }}/{{ i["album_id"] }}">{{ i["album_name"] }}</a></td>
+                <td>{{ i["genere"] }}</td>
+                <td>{{ i["album_by"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

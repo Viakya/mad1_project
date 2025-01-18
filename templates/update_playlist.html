@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Playlist </h1>
+    <form action="/you_tem/playlist/{{ username }}/{{ playlist.playlist_id }}/update" method="POST">
+        <label for="date_created">Date Created:</label>
+        <input type="text" name="date_created" value = "{{ playlist.date_created }}" readonly>
+
+        <label for="genre">Playlist Name:</label>
+        <input type="text" name="playlist_name" value = "{{ playlist.playlist_name }}" required>
+
+        <label for="album_by">Playlist By (User ID):</label>
+        <input type="text" name="user_id" value = "{{ playlist.user_id }}" readonly>
+
+        <input type="submit" value="Update Playlist">
+    </form>
+</body>
+</html>

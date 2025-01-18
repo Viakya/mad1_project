@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Detail</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white; /* Light Blue Background */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h2 {
+            color: #007BFF; /* Blue Heading Color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        div {
+            margin: 20px;
+        }
+
+        h3 {
+            color: #007BFF; /* Blue Subheading Color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #007BFF; /* Blue Borders */
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0056b3; /* Darker Blue Header */
+            color: #fff; /* White Text for Header */
+        }
+
+        tr:hover {
+            background-color: #b3d9ff; /* Lighter Blue on Hover */
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Album Name :: {{ album.album_name }}</h2>
+    <div>
+        <h3> Album Id  :: {{ album.album_id }} </h3>
+        <h3> Album By  :: {{ album.album_by }} </h3>
+        <h3> Genre  :: {{ album.genre }} </h3>
+        <h3> Date Created :: {{ album.date_created }} </h3>
+        <br> <br> <br>
+    </div>
+    <table id="all-songs">
+        <tr>
+            <th>Song_id</th>
+            <th>Song_Name</th>
+            <th>Artist</th>
+            <th>Upload Date</th>
+        </tr>
+        {% for i in listt %}
+        <tr>
+            <td>{{ i["song_id"] }}</td>
+            <td>{{ i["name"] }}</td>
+            <td>{{ i["artist"] }}</td>
+            <td>{{ i["upload_date"] }}</td>
+            <td>
+                <a href="/home_tem/{{ username }}/{{ i['song_id'] }}/play" type="button">Play</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <a href="/home_tem/{{ username }}">Back</a>
+</body>
+</html>

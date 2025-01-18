@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1, h5 {
+            color: #3498db;
+            text-align: center;
+        }
+        .navigation-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #3498db;
+            padding: 10px 0;
+        }
+
+        .navigation-button {
+            flex: 1;
+            padding: 10px 0;
+            background-color: #2980b9;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navigation-button:hover {
+            background-color: #1f618d;
+        }
+
+        .content {
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6a9e6a;
+            color: #fff;
+        }
+
+        a.button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+            margin: 10px;
+        }
+
+        a.button:hover {
+            background-color: #346399;
+        }
+
+        .actions-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CREATOR</h1>
+    <h5>User ID: {{name}}</h5>
+    <br>
+    <div class="navigation-container">
+        <a href="/home_tem/{{ name }}" class="navigation-button">Home</a>
+        <a href="/search_tem/{{ name }}" class="navigation-button">Search</a>
+        <a href="/you_tem/{{ name }}" class="navigation-button">You</a>
+        <a href="/creator_tem/{{ name }}" class="navigation-button">Creator</a>
+    </div>
+    <div class="content">
+        <br> <br>
+        <center><h2>-- ALL SONGS UPLOADED --</h2></center>
+        <table id="all-songs">
+            <tr>
+                <th>Song_id</th>
+                <th>Song_Name</th>
+                <th>Artist</th>
+                <th>Total Likes </th>
+                <th>Action</th>
+            </tr>
+            {% for i in u_songs %}
+            <tr>
+                <td>{{ i["song_id"] }}</td>
+                <td>{{ i["name"] }}</td>
+                <td>{{ i["artist"] }}</td>
+                <td>{{ dd[i["song_id"]|string]|length }} </td>
+
+                <td>
+                    <a href="/creator/song/{{ name }}/{{ i['song_id'] }}/update" class="button">Update</a>
+                    <a href="/creator/song/{{ name }}/{{ i['song_id'] }}/delete" class="button">Delete</a>
+                    <a href="/home_tem/{{name}}/{{ i['song_id'] }}/play" class="button">Play</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </table>
+
+        <br> <br>
+        <center><h2>-- ALL ALBUMS CREATED --</h2></center>
+        <table id="all-albums">
+            <tr>
+                <th>Album_id</th>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Action</th>
+            </tr>
+            {% for i in u_albums %}
+            <tr>
+                <td>{{ i["album_id"] }}</td>
+                <td><a href="/album_detail/{{ name }}/{{ i["album_id"] }}">{{ i["album_name"] }}</a></td>
+                <td>{{ i["genere"] }}</td>
+                <td>
+                    <a href="/creator/album/{{ name }}/{{ i['album_id'] }}/update" class="button">Update</a>
+                    <a href="/creator/album/{{ name }}/{{ i['album_id'] }}/delete" class="button">Delete</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </table>
+
+        <br> <br>
+        <center><h2>-- ACTIONS --</h2></center>
+        <div class="actions-container">
+            <a href="/creator_upload_song/{{ name }}" class="button">Upload A Song</a>
+            <br><br>
+            <a href="/creator_make_album/{{ name }}" class="button">Make New Album</a>
+            <br><br>
+            <a href="/creator_add_song_album/{{ name }}" class="button">Add Songs To Album</a>
+        </div>
+    </div>
+</body>
+</html>

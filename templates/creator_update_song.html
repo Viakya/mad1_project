@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Song</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UPDATE SONG</h1>
+        <form action="/creator/song/{{username}}/{{song.song_id}}/update" method="POST">
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" value = {{ song.name }} required>
+            
+            <label for="lyrics">Lyrics:</label>
+            <textarea name="lyrics">{{ song.lyrics }}</textarea>
+
+            
+            <label for="song_file">Upload Song File:</label>
+            <input type="text" name="song_file" value= {{ song.song_file }} readonly>
+            
+            <label for="duration">Duration:</label>
+            <input type="text" name="duration" value= {{ song.duration }}>
+            
+            <label for="artist">Artist:</label>
+            <input type="text" name="artist" value= {{song.artist}} required>
+            
+            <label for="upload_date">Upload Date:</label>
+            <input type="text" name="upload_date" value= {{song.upload_date}} readonly>
+            
+            <label for="uploaded_by">Uploaded By (User ID):</label>
+            <input type="text" name="uploaded_by" value="{{username}}" readonly>
+            
+            <input type="submit" value="Add Song">
+        </form>
+    </div>
+    <br> <br>
+    <a href="/creator_tem/{{username}}" type="button">Back </a>
+</body>
+</html>

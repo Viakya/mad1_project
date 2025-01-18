@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Album Add</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Adding Songs to Album</h2>
+    <form action="/creator_add_song_album/{{ username }}" method="POST" id="song_album">
+        <div>
+            <label for="album">Select Album:</label>
+            <select name="album" id="album">
+                {% for i in albums %}
+                <option value={{ i.album_id }}> {{ i.album_id }} {{ i.album_name }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="songs">Select Song:</label>
+            <select name="songs" id="songs">
+                {% for i in songs %}
+                <option value={{ i.song_id }}> {{ i.song_id }} {{ i.name }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+<br>
+<br>
+<a href="/creator_tem/{{ username }}"> Back  </a>
+
+</body>
+</html>

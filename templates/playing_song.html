@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Song</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #355C7D, #6C5B7B, #C06C84);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2, center {
+            color: white;
+            text-align: center;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+            color: white; /* Added text color for better visibility */
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007BFF; /* Blue Button Background */
+            color: #fff; /* White Text for Button */
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center; /* Centering the button text */
+        }
+
+        a:hover {
+            background-color: #0056b3; /* Darker Blue on Hover */
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+        <audio controls autoplay>
+            <source src="{{ song }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <p>{{ lyrics }}</p>
+    </center>
+    <br><br><br><br>
+    <a href="/home_tem/{{ username }}" type="button">Back </a>
+</body>
+</html>
